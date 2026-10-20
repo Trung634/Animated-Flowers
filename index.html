@@ -11,6 +11,11 @@
 </head>
 
 <body>
+    <!-- Nhạc nền tự động phát và lặp lại -->
+    <audio id="bg-music" loop preload="auto">
+        <source src="music.mp3" type="audio/mpeg">
+    </audio>
+
     <div class="scene" aria-hidden="true">
         <div class="glow glow-a"></div>
         <div class="glow glow-b"></div><i class="orb orb-a"></i><i class="orb orb-b"></i>
@@ -354,8 +359,27 @@
             document.body.append(burst);
             setTimeout(() => burst.remove(), 650);
         }, { passive: true });
-        </script>
+
+        // Phát nhạc khi người dùng tương tác lần đầu
+        const bgMusic = document.getElementById("bg-music");
+
+        function playAudio() {
+            if (bgMusic) {
+                bgMusic.volume = 0.75; // Đặt âm lượng ở mức 50% cho vừa nghe
+                bgMusic.play().then(() => {
+                    // Nhạc đã phát thành công, gỡ bỏ sự kiện để không gọi lại nhiều lần
+                    document.removeEventListener("click", playAudio);
+                    document.removeEventListener("touchstart", playAudio);
+                }).catch(err => {
+                    console.log("Trình duyệt chặn autoplay:", err);
+                });
+            }
+        }
+
+        // Bắt sự kiện click hoặc chạm màn hình đầu tiên để phát nhạc
+        document.addEventListener("click", playAudio);
+        document.addEventListener("touchstart", playAudio);
+    </script>
 </body>
 
 </html>
-
