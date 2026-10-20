@@ -53,6 +53,7 @@ input {
     opacity: .4;
     background-image: radial-gradient(1px 1px at 8% 20%, #fff 95%, transparent), radial-gradient(1.5px 1.5px at 80% 13%, #ffe8b5 95%, transparent), radial-gradient(1px 1px at 68% 40%, #fff 95%, transparent), radial-gradient(1.5px 1.5px at 20% 75%, #ffcde1 95%, transparent), radial-gradient(1px 1px at 94% 64%, #fff 95%, transparent), radial-gradient(1px 1px at 42% 16%, #fff 95%, transparent);
     background-size: 320px 300px;
+    will-change: transform;
     animation: stars 38s linear infinite
 }
 
@@ -68,21 +69,21 @@ input {
     width: min(68vw, 760px);
     aspect-ratio: 1;
     border-radius: 50%;
-    filter: blur(100px);
     opacity: .2;
+    will-change: transform, opacity;
     animation: breathe 9s ease-in-out infinite alternate
 }
 
 .glow-a {
     top: -42%;
     left: -22%;
-    background: #9b447d
+    background: radial-gradient(circle, #9b447d 0%, transparent 70%);
 }
 
 .glow-b {
     right: -25%;
     bottom: -46%;
-    background: #6846ac;
+    background: radial-gradient(circle, #6846ac 0%, transparent 70%);
     animation-delay: -4s
 }
 
@@ -94,7 +95,8 @@ input {
     height: 7px;
     border-radius: 50%;
     background: #ffe3b0;
-    box-shadow: 0 0 16px 5px #ffdda566;
+    box-shadow: 0 0 12px 3px #ffdda566;
+    will-change: transform;
     animation: float 8s ease-in-out infinite
 }
 
@@ -187,6 +189,7 @@ input {
     max-width: 690px;
     margin: clamp(4px, 2.5vh, 28px) auto 25px;
     text-align: center;
+    will-change: transform, opacity;
     animation: rise .8s .05s both
 }
 
@@ -199,7 +202,7 @@ input {
     display: grid;
     place-items: center;
     font-size: 30px;
-    filter: drop-shadow(0 0 19px #ffa1c278);
+    will-change: transform;
     animation: sway 5s ease-in-out infinite
 }
 
@@ -212,6 +215,7 @@ input {
 .o1 {
     top: 7px;
     left: 13px;
+    will-change: transform;
     animation: spin 8s linear infinite
 }
 
@@ -220,6 +224,7 @@ input {
     bottom: 19px;
     color: #ff8db9;
     font-size: 16px;
+    will-change: transform;
     animation: spin 8s linear infinite reverse
 }
 
@@ -260,9 +265,10 @@ input {
     padding: 24px 27px 19px;
     border: 1px solid #ffe4ef21;
     border-radius: 22px;
-    background: linear-gradient(135deg, #ffffff16, #ffffff09);
-    box-shadow: 0 22px 80px #0703133d, inset 0 1px #ffffff12;
-    backdrop-filter: blur(14px);
+    background: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 22px 80px #0703133d;
+    backdrop-filter: blur(10px);
+    will-change: transform, opacity;
     animation: rise .85s .16s both
 }
 
@@ -301,6 +307,7 @@ input {
     margin-left: auto;
     color: #ffd783;
     font-size: 22px;
+    will-change: transform;
     animation: spin 8s linear infinite
 }
 
@@ -323,7 +330,8 @@ input {
     text-align: left;
     background: #0f091e52;
     cursor: pointer;
-    transition: transform .25s cubic-bezier(.2, .8, .2, 1), background .25s, border-color .25s, box-shadow .25s
+    will-change: transform;
+    transition: transform .2s cubic-bezier(.2, .8, .2, 1), background .2s, border-color .2s
 }
 
 .choice:hover {
@@ -336,7 +344,7 @@ input {
     transform: translateY(-2px);
     border-color: #ffacc3b8;
     background: linear-gradient(135deg, #ff86b330, #c07dff1a);
-    box-shadow: 0 8px 26px #ff68a61c, inset 0 0 20px #ffffff09
+    box-shadow: 0 8px 26px #ff68a61c
 }
 
 .choice-icon {
@@ -348,7 +356,7 @@ input {
     border-radius: 12px;
     background: #ffa0c222;
     font-size: 19px;
-    transition: transform .3s
+    transition: transform .2s
 }
 
 .choice:hover .choice-icon,
@@ -399,7 +407,7 @@ input {
     font-style: normal;
     opacity: 0;
     transform: scale(.5);
-    transition: .22s
+    transition: transform .2s, opacity .2s
 }
 
 .choice.selected .check {
@@ -478,7 +486,8 @@ input {
     box-shadow: 0 7px 25px #ff97b833;
     font-weight: 700;
     cursor: pointer;
-    transition: transform .22s, box-shadow .22s
+    will-change: transform;
+    transition: transform .2s, box-shadow .2s
 }
 
 .open-button.ready:before {
@@ -490,7 +499,7 @@ input {
     height: 200%;
     transform: rotate(24deg);
     background: #ffffff85;
-    filter: blur(10px);
+    will-change: transform;
     animation: sheen 3.2s infinite
 }
 
@@ -552,10 +561,10 @@ footer span {
     place-items: center;
     overflow-y: auto;
     padding: 30px 16px 44px;
-    background: #0b061880;
+    background: rgba(11, 6, 24, 0.85);
     opacity: 0;
-    backdrop-filter: blur(0);
-    transition: opacity .3s, backdrop-filter .3s
+    will-change: opacity;
+    transition: opacity .3s
 }
 
 .overlay[hidden] {
@@ -564,7 +573,6 @@ footer span {
 
 .overlay.open {
     opacity: 1;
-    backdrop-filter: blur(3px)
 }
 
 .close {
@@ -582,6 +590,7 @@ footer span {
     color: #ffeaf2;
     font-size: 25px;
     cursor: pointer;
+    will-change: transform;
     transition: transform .2s
 }
 
@@ -601,9 +610,10 @@ footer span {
     color: #63364f;
     text-align: center;
     background: linear-gradient(135deg, #fffaf1, #fff4f1 54%, #ffedf4);
-    box-shadow: 0 30px 100px #0006, inset 0 0 0 7px #ffffff8c;
-    transform: translateY(26px) scale(.94) rotateX(7deg);
-    transition: transform .58s cubic-bezier(.18, .8, .25, 1)
+    box-shadow: 0 30px 100px #0006;
+    transform: translateY(26px) scale(.94);
+    will-change: transform;
+    transition: transform .45s cubic-bezier(.18, .8, .25, 1)
 }
 
 .letter:before {
@@ -616,7 +626,7 @@ footer span {
 }
 
 .overlay.open .letter {
-    transform: translateY(0) scale(1) rotateX(0)
+    transform: translateY(0) scale(1)
 }
 
 .ribbon {
@@ -637,11 +647,11 @@ footer span {
     justify-content: center;
     height: 83px;
     margin-top: 4px;
-    filter: drop-shadow(0 7px 8px #d16f952e)
 }
 
 .flowers span {
     font-size: 43px;
+    will-change: transform;
     animation: bob 3s ease-in-out infinite
 }
 
@@ -716,6 +726,7 @@ footer span {
     font-size: 10px;
     font-weight: 600;
     cursor: pointer;
+    will-change: transform;
     transition: transform .2s, box-shadow .2s
 }
 
@@ -743,6 +754,7 @@ footer span {
 }
 
 .letter.sparkle {
+    will-change: transform;
     animation: pop .45s ease-out
 }
 
@@ -764,20 +776,21 @@ footer span {
 
 @keyframes stars {
     to {
+        transform: translate3d(0, 0, 0);
         background-position: 320px 300px
     }
 }
 
 @keyframes breathe {
     to {
-        transform: scale(1.08) translate3d(2%, -2%, 0);
+        transform: scale3d(1.08, 1.08, 1) translate3d(2%, -2%, 0);
         opacity: .27
     }
 }
 
 @keyframes float {
     50% {
-        transform: translate(14px, -19px);
+        transform: translate3d(14px, -19px, 0);
         opacity: .95
     }
 }
@@ -791,18 +804,18 @@ footer span {
 @keyframes rise {
     from {
         opacity: 0;
-        transform: translateY(18px)
+        transform: translate3d(0, 18px, 0)
     }
 
     to {
         opacity: 1;
-        transform: translateY(0)
+        transform: translate3d(0, 0, 0)
     }
 }
 
 @keyframes sway {
     50% {
-        transform: rotate(7deg) translateY(-4px)
+        transform: rotate(7deg) translate3d(0, -4px, 0)
     }
 }
 
@@ -827,7 +840,7 @@ footer span {
 
 @keyframes bob {
     50% {
-        transform: translateY(-5px) rotate(3deg)
+        transform: translate3d(0, -5px, 0) rotate(3deg)
     }
 }
 
@@ -837,192 +850,7 @@ footer span {
     }
 }
 
-@media(min-height:850px) {
-    .intro {
-        margin-top: 4vh;
-        margin-bottom: 4vh
-    }
-
-    .composer {
-        padding-top: 28px;
-        padding-bottom: 23px
-    }
-}
-
-@media(max-width:700px) {
-    .page {
-        width: min(100% - 34px, 540px)
-    }
-
-    .topbar {
-        padding: 20px 0
-    }
-
-    .date small {
-        display: none
-    }
-
-    .intro {
-        margin: 5px auto 20px
-    }
-
-    .bouquet {
-        top: -35px;
-        right: 0;
-        transform: scale(.75)
-    }
-
-    .intro-copy {
-        max-width: 355px;
-        font-size: 12px
-    }
-
-    .composer {
-        padding: 20px 17px 16px
-    }
-
-    .choices {
-        grid-template-columns: 1fr;
-        gap: 8px
-    }
-
-    .choice {
-        min-height: 60px;
-        padding: 9px 11px
-    }
-
-    .choice-icon {
-        width: 36px;
-        height: 36px;
-        flex-basis: 36px
-    }
-
-    .choice small {
-        font-size: 10px
-    }
-
-    .check {
-        top: 50%;
-        right: 12px;
-        transform: translateY(-50%) scale(.5)
-    }
-
-    .choice.selected .check {
-        transform: translateY(-50%) scale(1)
-    }
-
-    .fields {
-        gap: 9px;
-        margin-top: 14px
-    }
-
-    .fields label {
-        font-size: 9px
-    }
-
-    .fields input {
-        padding: 0 9px;
-        font-size: 10px
-    }
-
-    footer {
-        padding-top: 15px
-    }
-}
-
-@media(max-width:390px) {
-    .page {
-        width: calc(100% - 24px)
-    }
-
-    .topbar {
-        padding: 15px 0
-    }
-
-    .brand {
-        font-size: 11px
-    }
-
-    .date {
-        font-size: 10px
-    }
-
-    .intro h1 {
-        font-size: 36px
-    }
-
-    .intro-copy {
-        padding: 0 8px
-    }
-
-    .composer {
-        padding: 16px 12px 13px
-    }
-
-    .heading h2 {
-        font-size: 16px
-    }
-
-    .fields {
-        grid-template-columns: 1fr;
-        gap: 9px;
-        margin: 12px 0
-    }
-
-    .fields label {
-        gap: 5px
-    }
-
-    .fields input {
-        height: 36px
-    }
-
-    .note {
-        font-size: 9px
-    }
-
-    .letter {
-        padding: 26px 25px 23px
-    }
-
-    .message {
-        font-size: 12px
-    }
-}
-
-@media(max-height:760px) and (min-width:701px) {
-    .topbar {
-        padding: 15px 0
-    }
-
-    .intro {
-        margin: 0 auto 15px
-    }
-
-    .intro h1 {
-        font-size: 48px
-    }
-
-    .composer {
-        padding-top: 18px;
-        padding-bottom: 15px
-    }
-}
-
-@media(prefers-reduced-motion:reduce) {
-
-    *,
-    *:before,
-    *:after {
-        scroll-behavior: auto !important;
-        animation-duration: .01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: .01ms !important
-    }
-}
-
-
-/* Animated flower garden and highly visible heart fireworks */
+/* Garden & Fireworks optimizations */
 .petal-field {
     position: fixed;
     inset: 0;
@@ -1037,7 +865,7 @@ footer span {
     color: #ffc5d9aa;
     font-size: 16px;
     font-style: normal;
-    text-shadow: 0 0 15px #ff9dc466;
+    will-change: transform, opacity;
     animation: petal-drift 13s linear infinite
 }
 
@@ -1079,6 +907,7 @@ footer span {
     width: 118px;
     height: 178px;
     transform-origin: 50% 100%;
+    will-change: transform;
     animation: garden-sway 5.5s ease-in-out infinite
 }
 
@@ -1100,7 +929,6 @@ footer span {
     width: 62px;
     height: 62px;
     transform: translateX(-50%);
-    filter: drop-shadow(0 0 15px #ff83b855)
 }
 
 .bloom-head i {
@@ -1111,7 +939,6 @@ footer span {
     height: 32px;
     border-radius: 55% 55% 46% 46%;
     background: linear-gradient(160deg, #ffd1e2, #ff75a9 75%);
-    box-shadow: inset 0 0 7px #fff8;
     transform: translate(-50%, -50%) rotate(var(--petal)) translateY(-13px)
 }
 
@@ -1143,7 +970,6 @@ footer span {
     height: 17px;
     border-radius: 50%;
     background: radial-gradient(circle at 35% 35%, #fff3ad, #ffc35b 60%, #ed8a58);
-    box-shadow: 0 0 12px #ffd78399;
     transform: translate(-50%, -50%)
 }
 
@@ -1165,7 +991,6 @@ footer span {
     height: 21px;
     border-radius: 100% 0 100% 0;
     background: linear-gradient(140deg, #77a76e, #225c48);
-    box-shadow: inset 0 1px #ffffff40
 }
 
 .leaf-left {
@@ -1183,14 +1008,6 @@ footer span {
     background: linear-gradient(160deg, #fff0c0, #ffb35e 75%)
 }
 
-.fireworks-layer {
-    position: fixed;
-    inset: 0;
-    z-index: 5;
-    overflow: hidden;
-    pointer-events: none
-}
-
 .heart-rocket {
     position: absolute;
     bottom: 0;
@@ -1198,7 +1015,7 @@ footer span {
     height: 15px;
     border-radius: 50%;
     background: #fff;
-    box-shadow: 0 0 12px 4px var(--color);
+    will-change: transform, opacity;
     animation: rocket-lift .88s cubic-bezier(.2, .75, .25, 1) both
 }
 
@@ -1210,14 +1027,12 @@ footer span {
     width: 2px;
     height: 72px;
     background: linear-gradient(var(--color), transparent);
-    filter: blur(1px)
 }
 
 .heart-burst {
     position: absolute;
     width: 0;
     height: 0;
-    filter: drop-shadow(0 0 12px var(--color))
 }
 
 .heart-core {
@@ -1227,8 +1042,8 @@ footer span {
     color: var(--color);
     font-size: clamp(42px, 7vw, 70px);
     line-height: 1;
-    text-shadow: 0 0 10px #fff, 0 0 24px var(--color);
     transform: translate(-50%, -50%);
+    will-change: transform, opacity;
     animation: core-flash 1.45s ease-out both
 }
 
@@ -1240,7 +1055,7 @@ footer span {
     height: 4px;
     border-radius: 50%;
     background: var(--spark);
-    box-shadow: 0 0 9px 2px var(--spark);
+    will-change: transform, opacity;
     animation: heart-expand 1.75s cubic-bezier(.16, .75, .3, 1) both
 }
 
@@ -1268,17 +1083,17 @@ footer span {
 
     0%,
     100% {
-        rotate: -3deg
+        transform: rotate(-3deg)
     }
 
     50% {
-        rotate: 3deg
+        transform: rotate(3deg)
     }
 }
 
 @keyframes rocket-lift {
     0% {
-        transform: translate(-50%, 0) scale(1);
+        transform: translate3d(-50%, 0, 0) scale(1);
         opacity: 0
     }
 
@@ -1291,14 +1106,14 @@ footer span {
     }
 
     100% {
-        transform: translate(-50%, var(--rise)) scale(.45);
+        transform: translate3d(-50%, var(--rise), 0) scale(.45);
         opacity: 0
     }
 }
 
 @keyframes heart-expand {
     0% {
-        transform: translate(-50%, -50%) scale(.1);
+        transform: translate3d(-50%, -50%, 0) scale(.1);
         opacity: 0
     }
 
@@ -1307,12 +1122,12 @@ footer span {
     }
 
     58% {
-        transform: translate(calc(var(--dx) - 50%), calc(var(--dy) - 50%)) scale(1.15);
+        transform: translate3d(calc(var(--dx) - 50%), calc(var(--dy) - 50%), 0) scale(1.15);
         opacity: 1
     }
 
     100% {
-        transform: translate(calc(var(--dx) - 50%), calc(var(--dy) - 50%)) scale(.2);
+        transform: translate3d(calc(var(--dx) - 50%), calc(var(--dy) - 50%), 0) scale(.2);
         opacity: 0
     }
 }
@@ -1320,93 +1135,26 @@ footer span {
 @keyframes core-flash {
     0% {
         opacity: 0;
-        scale: .15
+        transform: translate3d(-50%, -50%, 0) scale(.15)
     }
 
     18% {
         opacity: .95;
-        scale: 1.05
+        transform: translate3d(-50%, -50%, 0) scale(1.05)
     }
 
     62% {
         opacity: .75;
-        scale: .9
+        transform: translate3d(-50%, -50%, 0) scale(.9)
     }
 
     100% {
         opacity: 0;
-        scale: .55
+        transform: translate3d(-50%, -50%, 0) scale(.55)
     }
 }
 
-@media(max-width:700px) {
-    .bloom-left {
-        left: -15px;
-        transform: scale(.66)
-    }
-
-    .bloom-right {
-        right: -18px;
-        transform: scale(.58)
-    }
-
-    .petal-float {
-        font-size: 13px
-    }
-}
-
-@media(prefers-reduced-motion:reduce) {
-
-    .petal-float,
-    .bloom,
-    .heart-rocket,
-    .heart-spark,
-    .heart-core {
-        animation-duration: .01ms !important;
-        animation-iteration-count: 1 !important
-    }
-}
-
-.ambient-fireworks {
-    position: fixed;
-    inset: 0;
-    z-index: 2;
-    opacity: .9;
-    overflow: hidden;
-    pointer-events: none
-}
-
-/* Replay petals and give the garden a brief lively sway for every new greeting. */
-.overlay.effect-burst .petal-float {
-    animation: petal-drift 5s linear 1 both
-}
-
-.overlay.effect-burst .bloom {
-    animation: garden-sway-burst 3.4s ease-in-out 1 both
-}
-
-@keyframes garden-sway-burst {
-
-    0%,
-    100% {
-        rotate: -3deg
-    }
-
-    25% {
-        rotate: 7deg
-    }
-
-    50% {
-        rotate: -6deg
-    }
-
-    75% {
-        rotate: 5deg
-    }
-}
-
-
-/* Styling hiệu ứng cánh hoa khi click chuột */
+/* Styling hiệu ứng cánh hoa khi click chuột (Đã thêm lại bóng đổ) */
 .cursor-petal {
     position: fixed;
     pointer-events: none;
@@ -1414,14 +1162,15 @@ footer span {
     font-size: 18px;
     user-select: none;
     line-height: 1;
-    filter: drop-shadow(0 0 6px rgba(255, 141, 185, 0.6));
-    animation: petalBurst 1s cubic-bezier(0.12, 0.8, 0.32, 1) forwards;
+    filter: drop-shadow(0 0 6px rgba(255, 141, 185, 0.7));
+    will-change: transform, opacity;
+    animation: petalBurst .6s cubic-bezier(0.12, 0.8, 0.32, 1) forwards;
 }
 
 @keyframes petalBurst {
     0% {
         opacity: 1;
-        transform: translate(-50%, -50%) translate(0, 0) scale(0.6) rotate(0deg);
+        transform: translate3d(-50%, -50%, 0) translate3d(0, 0, 0) scale(0.6) rotate(0deg);
     }
 
     50% {
@@ -1430,6 +1179,213 @@ footer span {
 
     100% {
         opacity: 0;
-        transform: translate(-50%, -50%) translate(var(--dx), var(--dy)) scale(1.2) rotate(var(--rot));
+        transform: translate3d(-50%, -50%, 0) translate3d(var(--dx), var(--dy), 0) scale(1.2) rotate(var(--rot));
     }
+}
+
+/* Thêm lại bóng đổ sáng rực cho pháo hoa tim */
+.heart-rocket {
+    position: absolute;
+    bottom: 0;
+    width: 4px;
+    height: 15px;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 0 10px 3px var(--color);
+    will-change: transform, opacity;
+    animation: rocket-lift .88s cubic-bezier(.2, .75, .25, 1) both
+}
+
+.heart-burst {
+    position: absolute;
+    width: 0;
+    height: 0;
+    filter: drop-shadow(0 0 10px var(--color));
+}
+
+.heart-core {
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: var(--color);
+    font-size: clamp(42px, 7vw, 70px);
+    line-height: 1;
+    text-shadow: 0 0 8px #fff, 0 0 20px var(--color);
+    transform: translate(-50%, -50%);
+    will-change: transform, opacity;
+    animation: core-flash 1.45s ease-out both
+}
+
+.heart-spark {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--spark);
+    box-shadow: 0 0 8px 2px var(--spark);
+    will-change: transform, opacity;
+    animation: heart-expand 1.75s cubic-bezier(.16, .75, .3, 1) both
+}
+/* Smooth rendering and viewport-fit layout. Keep all glow and shadow styling intact. */
+.scene:before,
+.scene:after {
+    will-change: opacity;
+}
+.scene:after {
+    animation-name: stars-dim;
+}
+@keyframes stars {
+    0%, 100% { opacity: .28; }
+    50% { opacity: .48; }
+}
+@keyframes stars-dim {
+    0%, 100% { opacity: .12; }
+    50% { opacity: .25; }
+}
+.open-button.ready:before {
+    left: -30%;
+    transform: translate3d(-160%, 0, 0) rotate(24deg);
+}
+@keyframes sheen {
+    0%, 38% { transform: translate3d(-160%, 0, 0) rotate(24deg); }
+    72%, 100% { transform: translate3d(750%, 0, 0) rotate(24deg); }
+}
+/* Avoid reserving a separate GPU layer for every tiny firework spark. */
+.heart-spark { will-change: auto; }
+
+html, body {
+    width: 100%;
+    height: 100%;
+    overscroll-behavior: none;
+}
+body {
+    height: 100vh;
+    height: 100svh;
+    height: 100dvh;
+    min-height: 0;
+    overflow: hidden;
+}
+.page {
+    width: min(calc(100% - 48px), 1080px);
+    height: 100vh;
+    height: 100svh;
+    height: 100dvh;
+    min-height: 0;
+    padding-block: clamp(8px, 1.8vh, 16px);
+    justify-content: space-between;
+}
+.topbar { flex-shrink: 0; padding-block: clamp(8px, 1.8vh, 20px); }
+.intro { flex: 0 0 auto; margin: clamp(0px, 1vh, 12px) auto clamp(8px, 1.5vh, 16px); }
+.composer {
+    flex: 0 0 auto;
+    padding: clamp(14px, 2vh, 21px) clamp(16px, 3vw, 27px) clamp(12px, 1.6vh, 18px);
+}
+footer { flex-shrink: 0; padding: clamp(6px, 1.2vh, 12px) 0 4px; }
+.overlay {
+    overflow: hidden;
+    padding: max(12px, env(safe-area-inset-top)) 12px max(34px, env(safe-area-inset-bottom));
+}
+
+/* A grouped pointer burst gives instant feedback with fewer temporary DOM nodes. */
+.cursor-burst {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    overflow: visible;
+    pointer-events: none;
+}
+.cursor-petal { position: absolute; left: 0; top: 0; }
+
+@media (max-width: 600px) {
+    .page { width: calc(100% - 24px); padding-block: 6px; }
+    .topbar { padding-block: 7px; }
+    .brand { gap: 7px; font-size: 11px; }
+    .brand span { width: 26px; height: 26px; font-size: 16px; }
+    .date { font-size: 10px; letter-spacing: .12em; }
+    .date small { display: none; }
+    .intro { margin: 0 auto 8px; }
+    .bouquet { top: -20px; right: -6px; transform: scale(.65); opacity: .8; }
+    .eyebrow { margin-bottom: 7px; font-size: 8px; }
+    .intro h1 { font-size: clamp(31px, 9vw, 42px); line-height: 1.04; }
+    .intro-copy { max-width: 360px; margin-top: 7px; font-size: 11px; line-height: 1.35; }
+    .composer { padding: 12px 12px 10px; border-radius: 18px; }
+    .heading { gap: 9px; margin-bottom: 10px; }
+    .step { width: 30px; height: 30px; }
+    .heading h2 { font-size: 16px; }
+    .heading p { font-size: 10px; }
+    .choices { gap: 6px; }
+    .choice {
+        flex-direction: column;
+        justify-content: center;
+        gap: 4px;
+        min-height: 66px;
+        padding: 7px 3px;
+        border-radius: 12px;
+        text-align: center;
+    }
+    .choice-icon { flex-basis: 30px; width: 30px; height: 30px; border-radius: 10px; font-size: 16px; }
+    .choice b { font-size: 10px; white-space: nowrap; }
+    .choice small { display: none; }
+    .check { top: 3px; right: 3px; width: 13px; height: 13px; font-size: 8px; }
+    .fields { gap: 8px; margin: 10px 0; }
+    .fields label { gap: 4px; font-size: 9px; }
+    .fields label i { display: none; }
+    .fields input { height: 34px; padding: 0 7px; font-size: 10px; }
+    .open-button { min-height: 40px; font-size: 11px; }
+    .note { margin-top: 8px; font-size: 9px; }
+    footer { padding: 6px 0 2px; font-size: 9px; }
+}
+
+@media (max-height: 620px) {
+    .topbar { padding-block: 8px; }
+    .intro { margin: 0 auto 8px; }
+    .eyebrow { margin-bottom: 6px; }
+    .intro h1 { font-size: clamp(30px, 4.5vw, 44px); line-height: 1.03; }
+    .intro-copy { margin-top: 6px; font-size: 11px; line-height: 1.35; }
+    .composer { padding: 12px 20px 10px; }
+    .heading { margin-bottom: 8px; }
+    .choices { gap: 7px; }
+    .choice { min-height: 60px; }
+    .fields { margin: 9px 0; }
+    .fields input { height: 33px; }
+    .open-button { min-height: 38px; }
+    .note { margin-top: 7px; }
+    footer { padding: 5px 0 2px; }
+    .overlay { padding-top: 12px; padding-bottom: 30px; }
+    .letter { padding: 18px 24px 16px; }
+    .flowers { height: 58px; margin-top: 0; }
+    .flowers span { font-size: 36px; }
+    .flowers span:nth-child(2) { font-size: 43px; }
+    .to { margin: 7px 0 5px; font-size: 13px; }
+    .divider { margin: 8px auto 6px; }
+    .message { font-size: 12px; line-height: 1.55; }
+    .sign { gap: 2px; margin: 9px 0; }
+    .sign b { font-size: 14px; }
+    .again { padding: 8px 11px; }
+    .hint { bottom: 7px; }
+}
+
+@media (max-height: 480px) {
+    .intro-copy, .note, footer { display: none; }
+    .page { padding-block: 4px; }
+    .topbar { padding-block: 4px; }
+    .intro h1 { font-size: clamp(27px, 4.3vw, 34px); }
+    .composer { padding: 9px 16px 8px; }
+    .heading { margin-bottom: 6px; }
+    .choice { min-height: 52px; }
+    .fields { margin: 7px 0; }
+    .fields input { height: 30px; }
+    .open-button { min-height: 34px; }
+    .overlay { padding: 6px 10px 26px; }
+    .letter { padding: 12px 18px 10px; }
+    .flowers { height: 44px; }
+    .flowers span { font-size: 30px; }
+    .flowers span:nth-child(2) { font-size: 36px; }
+    .letter h2 { font-size: clamp(24px, 6vh, 30px); }
+    .divider { margin: 6px auto 4px; }
+    .message { font-size: 11px; line-height: 1.45; }
+    .sign { margin: 6px 0; }
+    .again { padding: 6px 10px; }
 }
